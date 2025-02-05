@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ```
 
 ### Download the model
-Download the model from the following link: [DeepFake model](https://drive.google.com/file/d/1-0J6Q1Q1Q7g5J1Zzv9Q1Z9Q1Z9Q1Z9Q1/view?usp=sharing). Place the model in the root directory of this project.
+Download the model from the following link: [DeepFake model](https://drive.google.com/file/d/1xvJrHs5aJuiVw1X0lIlBzWCEn3WzvjN0/view?usp=sharing). Place the model in the root directory of this project.
 
 ### Run the Flask-ML server
 
