@@ -49,4 +49,16 @@ python deepfake_cli.py --input_dir path/to/image_dir --output_dir path/to/output
 ![RescueBox Desktop](images/view_results.png)
 
 ### Attribution
-The model is taken from the following repository: [DeepFake]()
+The deepfake model project was done by students in the Fall 24 offering of 596E. Their work has been modified to work with ONNX models here. Their repo can be found [here](https://github.com/aravadikesh/DeepFakeDetector/).
+
+The model we're using was originally created by the authors of the following paper:
+
+```bibtex
+@InProceedings{Lanzino_2024_CVPR,
+    author    = {Lanzino, Romeo and Fontana, Federico and Diko, Anxhelo and Marini, Marco Raoul and Cinque, Luigi},
+    title     = {Faster Than Lies: Real-time Deepfake Detection using Binary Neural Networks},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2024},
+    pages     = {3771-3780}
+}
