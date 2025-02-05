@@ -1,5 +1,7 @@
-# deepfake-image-onnx
+# DeepFake Image Classifier ONNX model
 This repo demonstrates an example of how to run ONNX models. This example is aimed to help guide students in the first assignment in the Spring offering of 596E. Further improves can be made, especially when it comes to removing unnecessary dependencies (but this isn't a requirement in the first assignment).
+
+This example uses a deep fake model that was originally created by students in the Fall 2024 offering of 596E. The model has been modified to work with ONNX models. The model is used to classify images as either real or fake.
 
 ## Steps to use the deep fake model
 
