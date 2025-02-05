@@ -25,7 +25,9 @@ class DeepFakeProcessing:
                 T.CenterCrop(self.resolution),
                 T.ToTensor(),
             ]
-        )(image)[None,].numpy()
+        )(image)[
+            None,
+        ].numpy()
 
     def find_images_in_dir(self, directory):
         return [
@@ -37,10 +39,9 @@ class DeepFakeProcessing:
 
     def preprocess(self, dir_path):
         return [
-            self.preprocess_single(path)
-            for path in self.find_images_in_dir(dir_path)
+            self.preprocess_single(path) for path in self.find_images_in_dir(dir_path)
         ]
-    
+
     def preprocess_single(self, image_path):
         return self.apply_transforms_on_path(image_path)
 
@@ -50,9 +51,7 @@ class DeepFakeProcessing:
         return {"prediction": pred, "confidence": conf.item()}
 
     def postprocess(self, outputs):
-        return [
-            self.postprocess_single(out) for out in outputs
-        ]
+        return [self.postprocess_single(out) for out in outputs]
 
     def postprocess_single(self, output):
         return self.decode_prediction(torch.sigmoid(torch.tensor(output[0][0].item())))
@@ -65,7 +64,7 @@ class DeepFakeModel:
             model_path,
             providers=["CUDAExecutionProvider", "CPUExecutionProvider"],
         )
-    
+
     def predict(self, image_path):
         input = self.dfp.preprocess_single(image_path)
         output = self.session.run(None, {"input": input})

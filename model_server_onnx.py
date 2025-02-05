@@ -30,9 +30,8 @@ def create_transform_case_task_schema() -> TaskSchema:
         label="Path to the output file",
         input_type=InputType.DIRECTORY,
     )
-    return TaskSchema(
-        inputs=[input_schema, output_schema], parameters=[]
-    )
+    return TaskSchema(inputs=[input_schema, output_schema], parameters=[])
+
 
 # Specify the input and output types for the task
 class Inputs(TypedDict):
@@ -42,6 +41,7 @@ class Inputs(TypedDict):
 
 class Parameters(TypedDict):
     pass
+
 
 # Create a server instance
 server = MLServer(__name__)
