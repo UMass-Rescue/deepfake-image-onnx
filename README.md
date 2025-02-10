@@ -3,6 +3,20 @@ This repo demonstrates an example of how to run ONNX models. This example is aim
 
 This example uses a deep fake model that was originally created by students in the Fall 2024 offering of 596E. The model has been modified to work with ONNX models. The model is used to classify images as either real or fake.
 
+## Steps to export the ONNX model
+
+The following steps were taken to export the ONNX model.
+1. Clone and set up the DeepFake repo found [here](https://github.com/aravadikesh/DeepFakeDetector/). Follow instructions on README.md to get the deep fake model running.
+2. Configure [Rescue Box Desktop](https://github.com/UMass-Rescue/RescueBox-Desktop/releases) to work with the DeepFake repo. To test that the application works, send an example request where the input is the "images" folder from this (deepfake-image-onnx) repo. Once you get the deep fake model working, proceed to the next step.
+3. Set a breakpoint at Line 95, right before the `output = net(image)` call in the `predict` function in `model_server.py`.
+4. Send a request to the Deepfake backend again using the same inputs from the RescueBox Desktop application. The breakpoint will be triggered in the backend.
+5. Run the following python code to export the ONNX model.
+```
+torch.onnx.export(net, image, "deepfake_model.onnx", export_params=True, opset_version=16, do_constant_folding=True, input_names=["input"], output_names=["output"], dynamic_axes={"input": {0: "batch_size"}, "output": {0: "batch_size"}})
+```
+
+The resulting ONNX model will be saved as "deepfake_model.onnx" in the directory where the `model_server.py` exists.
+
 ## Steps to use the deep fake model
 
 ### Create virtual environment and install dependencies
