@@ -5,10 +5,10 @@ This example uses a deep fake model that was originally created by students in t
 
 ## Steps to export the ONNX model
 
-The following steps were taken to export the ONNX model.
+Exporting the ONNX model involved the following key steps:
 1. Clone and set up the DeepFake repo found [here](https://github.com/aravadikesh/DeepFakeDetector/). Follow instructions on README.md to get the deep fake model running.
 2. Configure [Rescue Box Desktop](https://github.com/UMass-Rescue/RescueBox-Desktop/releases) to work with the DeepFake repo. To test that the application works, send an example request where the input is the "images" folder from this (deepfake-image-onnx) repo. Once you get the deep fake model working, proceed to the next step.
-3. Set a breakpoint at Line 95, right before the `output = net(image)` call in the `predict` function in `model_server.py`.
+3. Set a breakpoint at Line 95, right before the `output = net(image)` call in the `predict` function in `model_server.py` by adding the following line: `import pdb; pdb.set_trace()`.
 4. Send a request to the Deepfake backend again using the same inputs from the RescueBox Desktop application. The breakpoint will be triggered in the backend.
 5. Run the following python code to export the ONNX model.
 ```
